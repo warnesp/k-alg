@@ -1,5 +1,6 @@
 #include "kalg.h"
 
+#include <algorithm>
 #include <queue>
 
 using namespace kalg;
@@ -25,8 +26,22 @@ Graph& Graph::operator=(Graph && other) noexcept {
 
 size_t Graph::size() { return adjancentGraph.size(); }
 
-void Graph::addEdge(VertexId vertex, VertexId adjacentVertex) {
-    adjancentGraph.at(vertex).push_back(adjacentVertex);
+bool Graph::addEdge(VertexId vertexId, VertexId adjacentId) {
+    bool nodesExists = vertexId < adjancentGraph.size() 
+        && adjacentId < adjancentGraph.size();
+
+    // nodes out of range
+    if(!nodesExists) { return false; }
+
+    auto & vertex = adjancentGraph[vertexId];
+
+    // check if the link already exists
+    auto exists = std::find(vertex.begin(), vertex.end(), adjacentId) != vertex.end();
+    if(exists) { return false; }
+
+    vertex.push_back(adjacentId);
+    return true;
+
 }
 
 std::vector<VertexId> Graph::sort() {

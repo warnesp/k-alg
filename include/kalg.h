@@ -19,6 +19,7 @@ namespace kalg {
         std::vector<Vertex> adjancentGraph;
 
         public:
+        Graph() = delete;
 
         /**
          * \brief Creates a graph with the specified number of vertices
@@ -42,10 +43,12 @@ namespace kalg {
         /**
          * \brief Add a directed adjacentcy to the specified vertex
          *
-         * \param vertex Vertex to add adjacentcy too 
-         * \param adjacentVertex Vertex that is directionally adjacent
+         * \param vertexId Vertex to add adjacentcy too 
+         * \param adjacentId Vertex that is directionally adjacent
+         *
+         * \return true if added 
          */
-        void addEdge(VertexId vertex, VertexId adjacentVertex);
+        bool addEdge(VertexId vertexId, VertexId adjacentId);
 
 
         /**
