@@ -26,7 +26,7 @@ namespace kalg {
          *
          * \param vertexCount The number of vertices to have in the graph
          */
-        Graph(size_t vertexCount);
+        explicit Graph(size_t vertexCount);
 
         Graph(Graph const & other);
         Graph(Graph && other) noexcept;
@@ -43,16 +43,16 @@ namespace kalg {
         /**
          * \brief Add a directed adjacentcy to the specified vertex
          *
-         * \param vertexId Vertex to add adjacentcy too 
+         * \param vertexId Vertex to add adjacentcy too
          * \param adjacentId Vertex that is directionally adjacent
          *
-         * \return true if added 
+         * \return true if added
          */
         bool addEdge(VertexId vertexId, VertexId adjacentId);
 
 
         /**
-         * \brief Sort the vertices with Kahn's algorithm. If the size of the result is less than the size of the Graph, 
+         * \brief Sort the vertices with Kahn's algorithm. If the size of the result is less than the size of the Graph,
          * then the Graph contains a dependency loop.
          *
          * \return The results of the sorting

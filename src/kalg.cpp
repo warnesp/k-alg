@@ -5,14 +5,14 @@
 
 using namespace kalg;
 
-Graph::Graph(size_t vertexCount) 
+Graph::Graph(size_t vertexCount)
     : adjancentGraph(vertexCount) { }
 
 Graph::Graph(Graph const & other)
     : adjancentGraph(other.adjancentGraph) {
 }
 
-Graph::Graph(Graph && other) noexcept 
+Graph::Graph(Graph && other) noexcept
     : adjancentGraph(std::move(other.adjancentGraph)) { }
 
 Graph& Graph::operator=(Graph const & other) {
@@ -27,7 +27,7 @@ Graph& Graph::operator=(Graph && other) noexcept {
 size_t Graph::size() { return adjancentGraph.size(); }
 
 bool Graph::addEdge(VertexId vertexId, VertexId adjacentId) {
-    bool nodesExists = vertexId < adjancentGraph.size() 
+    bool nodesExists = vertexId < adjancentGraph.size()
         && adjacentId < adjancentGraph.size();
 
     // nodes out of range
